@@ -1,0 +1,33 @@
+Tarea #2
+
+Ejercicio #1
+
+Factura #1 
+Factura de venta:
+((leche 3 1200) (Azucar 1 1100))
+Impuesto total a pagar: ₡468 
+Monto total de la factura sin impuesto:
+4700 
+ 
+Factura #2 
+Factura de venta:
+((Frijoles 4 1200) (Azucar 1 1100))
+Impuesto total a pagar: ₡624 
+Monto total de la factura sin impuesto:
+5900 
+ 
+Factura #3 
+Factura de venta:
+((Arroz 2 1800) (Frijoles 4 1200) (Azucar 3 1100) (Cafe 1 2800) (leche 2 1200))
+Impuesto total a pagar: ₡1885 
+Monto total de la factura sin impuesto:
+16900
+
+
+Ejercicio #2
+
+(la casa, pintando la cerca,)
+(el no puede ver, no vayas por alla)
+(el arbol esta por alla, hablame por mensaje, por correo,)
+
+
