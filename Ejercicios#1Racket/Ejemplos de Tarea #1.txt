@@ -1,0 +1,29 @@
+Ejemplos de Tarea #1
+
+Ejercicio #1
+
+Capital  Interés  Años  Resultado
+---------------------------------
+2000     0.10     0      2000
+2000     0.10     1      2200.0
+2000     0.10     2      2420.0
+2000     0.10     3      2662.0
+
+
+Ejercicio#6
+
+(1 2 3 4 5 6 7 8)
+(1 1 2 2 3 3 4)
+
+
+Ejercicio#8
+
+#t
+#t
+#f
+
+Ejercicio#9
+
+(1 2 4 5)
+(1 2 3 4 5)
+
