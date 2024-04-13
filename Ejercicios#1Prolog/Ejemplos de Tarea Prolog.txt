@@ -1,0 +1,65 @@
+Ejemplos de Tarea
+
+Ejercicio #1
+
+?- sub_conjunto([],[1,2,3,4,5]).
+true.
+
+?- sub_conjunto([1,2,3],[1,2,3,4,5]).
+true.
+
+?- sub_conjunto([1,2,6],[1,2,3,4,5]).
+false.
+
+?- sub_conjunto([d, e], [a, b, c]).
+false.
+
+?- sub_conjunto([a, b], [a, b, c]).
+true 
+
+
+Ejercicio #2
+
+?- aplanar([11,2,[33,[4,5,8],[6,7]]],X).
+X = [11, 2, 33, 4, 5, 8, 6, 7] 
+
+
+?- aplanar([1,2,[3,[4,5],[6,7]]],X).
+X = [1, 2, 3, 4, 5, 6, 7] .
+
+
+Ejercicio #3
+
+?- distanciaH("romano","comino",X).
+X = 2
+
+?- distanciaH("romano","camino",X).
+X = 3 
+
+?- distanciaH("roma","comino",X).
+X = 2 .
+
+?- distanciaH("romano","ron",X).
+X = 1 .
+
+?- distanciaH("romano","cama",X).
+X = 2 
+
+
+Ejercicio #4
+
+
+?- combinaciones(1000, Combinaciones).
+Combinaciones = [(guacamole, filete_cerdo, flan), (ensalada, pollo_al_horno, nueces_con_miel), (consome, carne_en_salsa, flan_de_coco), (tostadas_caprese, tilapia, naranja_confitada)] .
+
+
+?- combinaciones(2500, Combinaciones).
+Combinaciones = [(guacamole, filete_cerdo, flan), (ensalada, pollo_al_horno, nueces_con_miel), (consome, carne_en_salsa, naranja_confitada), (tostadas_caprese, tilapia, flan_de_coco), (pure_de_papa, salmon, fruta_con_helado)] .
+
+
+?- combinaciones(800, Combinaciones).
+Combinaciones = [(guacamole, filete_cerdo, flan), (ensalada, tilapia, naranja_confitada)] .
+
+
+?- combinaciones(3800, Combinaciones).
+Combinaciones = [(guacamole, filete_cerdo, flan), (ensalada, pollo_al_horno, nueces_con_miel), (consome, carne_en_salsa, naranja_confitada), (tostadas_caprese, tilapia, flan_de_coco), (pure_de_papa, salmon, fruta_con_helado)] 
