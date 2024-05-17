@@ -97,11 +97,13 @@ class EventoEspecifico extends Evento {
 
 // Singleton para Agenda
 class Agenda {
-    private static Agenda instancia;
     private List<Object> elementos;
 
+    // Lazy Singleton: la instancia se crea solo cuando es necesaria
+    private static Agenda instancia;
+
     private Agenda() {
-        elementos = new ArrayList<>();
+        this.elementos = new ArrayList<>();
     }
 
     public static Agenda getInstancia() {
@@ -120,7 +122,9 @@ class Agenda {
     }
 
     public void modificarElemento(int index, Object nuevoElemento) {
-        elementos.set(index, nuevoElemento);
+        if (index >= 0 && index < elementos.size()) {
+            elementos.set(index, nuevoElemento);
+        }
     }
 
     public List<Object> getElementos() {
@@ -129,7 +133,9 @@ class Agenda {
 
     @Override
     public String toString() {
-        return "Agenda: " + elementos;
+        return elementos.stream()
+                        .map(Object::toString)
+                        .collect(Collectors.joining("\n"));
     }
 }
 
@@ -152,14 +158,14 @@ class ContactoFactory extends AbstractFactory {
 
     @Override
     public Evento crearEvento(String nombreEvento, String fecha, String tipo, String... extra) {
-        return null;
+        return null; // ContactoFactory no crea eventos
     }
 }
 
 class EventoFactory extends AbstractFactory {
     @Override
     public Contacto crearContacto(String nombre, String apellido, String telefono, String tipo, String... extra) {
-        return null;
+        return null; // EventoFactory no crea contactos
     }
 
     @Override
@@ -212,3 +218,73 @@ public class Main {
         eventos.forEach(System.out::println);
     }
 }
+
+/*
+Todos los elementos en la agenda:
+Contacto Familiar -> Contacto -> Persona: Juan P�rez, Tel�fono: 123456, Parentesco: Hermano
+Evento: Reuni�n, Fecha: 2024-06-01
+Contacto Empresarial -> Contacto -> Persona: Ana G�mez, Tel�fono: 654321, Empresa: TechCorp, Puesto: Ingeniera
+Evento Espec�fico -> Evento: Conferencia, Fecha: 2024-07-15, Descripci�n: Tecnolog�a e Innovaci�n
+
+Contactos en la agenda:
+Contacto Familiar -> Contacto -> Persona: Juan P�rez, Tel�fono: 123456, Parentesco: Hermano
+Contacto Empresarial -> Contacto -> Persona: Ana G�mez, Tel�fono: 654321, Empresa: TechCorp, Puesto: Ingeniera
+
+Eventos en la agenda:
+Evento: Reuni�n, Fecha: 2024-06-01
+Evento Espec�fico -> Evento: Conferencia, Fecha: 2024-07-15, Descripci�n: Tecnolog�a e Innovaci�n
+*/
+
+
+
+
+
+
+
+
+
+/*
+
+Singleton:
+
+Lazy Singleton:
+Razón: Utilice el patrón Singleton (Lazy Singleton) para la clase Agenda porque 
+necesitamos asegurarnos de que solo haya una instancia de la agenda en toda la 
+aplicación. En lugar de crear la instancia al inicio, se crea solo cuando realmente 
+se necesita. 
+Esto es más eficiente en términos de recursos, especialmente si la agenda no se 
+va a usar de inmediato o nunca se llega a utilizar.
+
+Comparación con Eager Singleton: Un Singleton ansioso (Eager Singleton) crea la 
+instancia de inmediato, al inicio del programa, independientemente de si se necesita 
+o no. Esto puede desperdiciar recursos, especialmente en aplicaciones grandes donde 
+muchas instancias innecesarias podrían crearse.
+
+Preferencia: Prefiero el Lazy Singleton porque es más eficiente y ahorra recursos, 
+creando la instancia solo cuando es necesario.
+
+Referencias:
+https://www.linkedin.com/pulse/two-types-singleton-design-pattern-lazy-eager-arifuzzaman-tanin/
+
+
+
+Abstract Factory:
+Razón: El patrón Abstract Factory es perfecto para crear familias de objetos 
+relacionados (como Contactos y Eventos) sin especificar sus clases concretas. 
+Esto permite que nuestro código sea flexible y fácil de mantener. Podemos manejar 
+diferentes tipos de contactos (simples, familiares, empresariales) y eventos 
+(simples, específicos) de manera uniforme y extensible.
+Ventajas:
+Centralización: Proporciona una interfaz clara y centralizada para la creación 
+de objetos, haciendo que el código sea más limpio y manejable.
+Extensibilidad: Facilita la adición de nuevos tipos de contactos o eventos sin 
+modificar el código existente.
+
+
+Referencias:
+
+https://refactoring.guru/design-patterns/abstract-factory
+
+https://www.baeldung.com/java-abstract-factory-pattern
+
+*/
